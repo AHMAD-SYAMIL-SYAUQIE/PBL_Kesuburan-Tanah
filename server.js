@@ -44,7 +44,7 @@ const NUMERIC_FIELDS = ["ph", "temperature", "moisture", "nitrogen", "phosphorus
 const REQUIRED_FIELDS = ["timestamp", ...NUMERIC_FIELDS, "classification", "recommendation"];
 
 app.get("/", (req, res) => {
-  res.json({ status: "ok", message: "Soil Cloud API is running" });
+  res.json({ status: "ok", message: "API Kesuburan Tanah berjalan" });
 });
 
 // ponytail: x-api-key belum dipasang (keamanan di luar lingkup minggu ini).

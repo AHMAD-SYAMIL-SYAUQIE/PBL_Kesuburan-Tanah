@@ -1,4 +1,4 @@
-# Soil Cloud — Rangkuman & Blueprint Bangun Ulang
+# Kesuburan Tanah — Rangkuman & Blueprint Bangun Ulang
 
 Dokumen ini berdiri sendiri. Cukup dibaca dokumen ini saja untuk membangun proyek dari folder kosong, tanpa membaca kode lama. Ditulis setelah satu kali percobaan penuh, jadi memuat keputusan, alasan, dan kesalahan yang tidak perlu diulang.
 
@@ -13,7 +13,7 @@ Sistem monitoring kesuburan tanah untuk PBL (semester 5).
 Tiga bagian:
 
 1. **ESP32** di lahan. Membaca sensor tanah, menghasilkan klasifikasi dan rekomendasi lewat model AI di perangkat, lalu mengirim JSON ke cloud.
-2. **Soil Cloud API** (Express + Supabase) di Vercel. Menerima data dari ESP32, menyajikan data ke dashboard, menangani login.
+2. **API Kesuburan Tanah** (Express + Supabase) di Vercel. Menerima data dari ESP32, menyajikan data ke dashboard, menangani login.
 3. **Dashboard web** di balik login. Menampilkan kondisi tanah terkini, grafik, rekomendasi, riwayat.
 
 Tujuan: petani tahu kondisi tanah tanpa uji laboratorium tiap kali.
@@ -44,7 +44,7 @@ Jangan diutak-atik ulang kecuali ada alasan baru.
 ## 3. Struktur folder target
 
 ```
-soil-cloud/
+kesuburan-tanah/
 ├─ server.js                 # seluruh backend
 ├─ package.json
 ├─ vercel.json
@@ -68,7 +68,7 @@ Catatan penting: di Vercel, `express.static()` **diabaikan**. File statis harus 
 
 ```json
 {
-  "name": "soil-cloud-api",
+  "name": "api-kesuburan-tanah",
   "version": "1.0.0",
   "main": "server.js",
   "type": "commonjs",
@@ -341,7 +341,7 @@ const authenticateUser = (req, res, next) => {
 };
 
 // --- endpoint -----------------------------------------------------------
-app.get("/", (req, res) => res.json({ status: "ok", message: "Soil Cloud API is running" }));
+app.get("/", (req, res) => res.json({ status: "ok", message: "API Kesuburan Tanah berjalan" }));
 
 app.post("/api/login", loginLimiter, async (req, res) => {
   const { username, password } = req.body || {};
