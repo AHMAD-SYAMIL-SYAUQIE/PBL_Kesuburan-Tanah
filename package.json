@@ -5,7 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "certs": "node scripts/generate-certs.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.2",
@@ -13,6 +14,7 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "selfsigned": "^5.5.0"
   }
 }
