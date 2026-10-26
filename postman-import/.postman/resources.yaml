@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: 5694e998-b1ec-4389-b8c6-be7277a7b2cf
+
+localResources:
+  collections:
+    - ../kesuburan-tanah.postman_collection.json

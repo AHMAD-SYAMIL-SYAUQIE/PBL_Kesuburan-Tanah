@@ -45,9 +45,6 @@ const toApi = (row) => ({
 
 const NUMERIC_FIELDS = ["ph", "temperature", "moisture", "nitrogen", "phosphorus", "potassium", "ec"];
 const REQUIRED_FIELDS = ["timestamp", ...NUMERIC_FIELDS, "classification", "recommendation"];
-
-// Batas wajar, bukan hasil kalibrasi. Sesuaikan setelah sensor dikalibrasi.
-// Lihat DOCS/KEAMANAN.md bagian 5.4.
 const RANGE = {
   ph: [0, 14],
   temperature: [-10, 60],
@@ -150,8 +147,9 @@ app.post("/api/soil", authenticateApiKey, async (req, res) => {
   res.status(201).json({ success: true, message: "Data saved successfully", data: data.map(toApi) });
 });
 
-// ponytail: Bearer JWT belum dipasang. Sisipkan authenticateUser di sini.
-app.get("/api/soil", async (req, res) => {
+// Sementara pakai API key yang sama dengan perangkat; ganti ke Bearer JWT
+// begitu autentikasi dashboard tersedia.
+app.get("/api/soil", authenticateApiKey, async (req, res) => {
   const limit = Math.max(1, Math.min(Number(req.query.limit) || 200, 200));
 
   const { data, error } = await supabase
